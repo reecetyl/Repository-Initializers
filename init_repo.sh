@@ -6,7 +6,8 @@ BUILD_SCRIPT="build.sh"
 SOURCE_DIR="src"
 INCLUDE_DIR="include"
 TEST_DIR="tests"
-SUBDIRS=($SOURCE_DIR $INCLUDE_DIR $TEST_DIR)
+REF_DIR="references"
+SUBDIRS=($SOURCE_DIR $INCLUDE_DIR $TEST_DIR $REF_DIR)
 CMAKEFILE="CMakeLists.txt"
 
 # Create base README
@@ -50,4 +51,4 @@ echo "target_link_options($PROJ_NAME PRIVATE -fsanitize=address)" >> $CMAKEFILE
 # Create .gitignore
 touch ".gitignore"
 echo "build/" >> ".gitignore"
-echo "__pycache__/" >> ".gitignore" 
+echo "__pycache__/" >> ".gitignore"
