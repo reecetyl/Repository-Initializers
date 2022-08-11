@@ -29,15 +29,16 @@ echo "make" >> $BUILD_SCRIPT
 touch $CMAKEFILE
 echo "cmake_minimum_required(VERSION 3.15)" >> $CMAKEFILE
 echo >> $CMAKEFILE
-echo "project($PROJ_NAME) LANGUAGES C" >> $CMAKEFILE
+echo "project($PROJ_NAME LANGUAGES C)" >> $CMAKEFILE
 echo >> $CMAKEFILE
 echo "include_directories($SOURCE_DIR $INCLUDE_DIR $TEST_DIR)" >> $CMAKEFILE
 echo >> $CMAKEFILE
+echo "find_program(CLANG_TIDY_PROG clang-tidy)" >> $CMAKEFILE
 echo "if(CLANG_TIDY_PROG)" >> $CMAKEFILE
 echo -e "\t\tset(CMAKE_C_CLANG_TIDY" >> $CMAKEFILE
 echo -e "\t\t\${CLANG_TIDY_PROG};" >> $CMAKEFILE
 echo -e '\t\t"--checks=* -llvm-include-order, -cppcoreguidelines-*, -readability-magic-numbers, -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling, -hiccp-no-assembler")' >> $CMAKEFILE
-echo -e '\t\t"set(CMAKE_C_FLAGS "-g"' >> $CMAKEFILE
+echo -e '\t\tset(CMAKE_C_FLAGS "-g")' >> $CMAKEFILE
 echo -e '\telse()' >> $CMAKEFILE
 echo -e '\t\tset(CMAKE_C_COMPILER gcc)' >> $CMAKEFILE
 echo -e '\t\tset(CMAKE_C_FLAGS "-g -Wall -pedantic")' >> $CMAKEFILE
