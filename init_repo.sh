@@ -58,13 +58,13 @@ echo -e '\tendif()' >> $CMAKEFILE
 
 # Add structure for files
 # Note: This will require by-hand editing of filenames depending on project
-echo "add_executable($PROJ_NAME ${PLACEHOLDER_FILES[@]}" >> $CMAKEFILE
+echo "add_executable($PROJ_NAME ${PLACEHOLDER_FILES[@]})" >> $CMAKEFILE
 echo >> $CMAKEFILE
 
 # Add Threading package
 echo "set(THREADS_PREFER_PTHREAD_FLAG ON)" >> $CMAKEFILE
 echo "find_package(Threads REQUIRED)" >> $CMAKEFILE
-echo "target_link_libraries($PROJ_NAME PRIVATE Threads::Threads" >> $CMAKEFILE
+echo "target_link_libraries($PROJ_NAME PRIVATE Threads::Threads)" >> $CMAKEFILE
 
 # Add Address Sanitizer
 echo >> $CMAKEFILE
